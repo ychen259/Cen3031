@@ -9,7 +9,7 @@
       <div class="row">
         <h1>UF Directory App</h1>
       </div>
-      <div class="row" ng-controller="ListingsController">
+      <div class="row" ng-controller="ListingsController as listCtrl">
         <div class="col-md-6">
           <div class="input-group" id="searchBar">
             <!-- 
@@ -18,14 +18,14 @@
 
               -->
             <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" class="form-control" placeholder="Search" ng-model="searchText">
           </div>
           <div class="tableWrapper">
             <table class="table table-striped table-hover">
               <tr>
                 <th>Code</th>
                 <th>Building Name</th>
-                <th></th>
+                <th>Action</th>
               </tr>
               <!-- 
 
@@ -34,6 +34,17 @@
                       * include a way to remove individual listings
 
                 --> 
+<!------------------------------------------------------------------------------------------------------>
+                <tr ng-repeat="data in listings | filter:searchText" ng-click="showDetails(listings.indexOf(data))">
+                  <td> {{data.code}} </td>
+                  <td>  {{data.name}}</td>
+                  <td><button ng-click="deleteListing(listings.indexOf(data))">delete</button></td>
+
+                </tr>
+
+
+<!------------------------------------------------------------------------------------------------------>
+
             </table>
           </div>
           <!-- 
@@ -41,6 +52,19 @@
               Write an HTML form that adds new listings to the directory 
 
             -->
+<!------------------------------------------------------------------------------------------------------>
+         <div>
+           <h4> <Strong>Add To Listing</Strong></h4>
+           <form name="addToList" ng-submit="addListing()">
+           <input type="text" placeholder="Enter the Code" ng-model="data.code" style="text-transform:uppercase" required/><br>
+           <input type="text" placeholder="Enter the Building Name" ng-model="data.name" style="text-transform: capitalize;" required/><br>
+            <input type="number" placeholder="Enter the Latitude" ng-model="data.coordinates.latitude"/><br>
+            <input type="number" placeholder="Enter the Longitude" ng-model="data.coordinates.longitude"/><br>
+            <input type="text" placeholder="Enter the Address" ng-model="data.address"/><br>
+           <input type="submit" value="Submit" />
+           </form>
+         </div>
+<!------------------------------------------------------------------------------------------------------>
         </div>
         <div class="col-md-6">
           <div class="jumbotron">
@@ -51,6 +75,17 @@
                    * consider how to use ng-click within the the table to implement this feature
 
              -->
+<!------------------------------------------------------------------------------------------------------>
+             <h5> Code: {{detailedInfo.code}}</h5>
+             <h5> Building Name: {{detailedInfo.name}}</h5>
+             <h5 >Coordinates</h5>
+             <ul>
+               <li > Latitude: {{detailedInfo.coordinates.latitude}}</li>
+               <li > Longitude: {{detailedInfo.coordinates.longitude}}</li>
+             </ul>
+             <h5> Address: {{detailedInfo.address}}</h5>
+             </div>
+<!------------------------------------------------------------------------------------------------------>
           </div>
         </div>
       </div>

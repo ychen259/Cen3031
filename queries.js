@@ -41,10 +41,25 @@ var updatePhelpsMemorial = function() {
     Phelps Memorial Hospital Center's address is incorrect. Find the listing, update it, and then 
     log the updated document to the console. 
    */
-  var newAddress = "new address";
-  Listing.update({name: 'Phelps Laboratory'}, {address: newAddress},function(err, obj){
-    if (err) throw err;
+    
+    Listing.find({name: 'Phelps Laboratory'}, function(err, data){
+      if (err) throw err;
+      var size = data.length;
+      var updated_at = Date();
+      var address = "new address";
+
+      for(var i = 0; i<size; i++){
+        data[i].address = address;
+        data[i].updated_at = updated_at;
+         data[i].save(function(err, value){
+          if (err) throw err;
+          console.log(value);
+
+         });
+
+      }
   });
+
 
 };
 
@@ -53,6 +68,7 @@ var retrieveAllListings = function() {
     Retrieve all listings in the database, and log them to the console. 
    */
    Listing.find({}, function(err, data){
+     if (err) throw err;
      console.log(data);
    });
 };

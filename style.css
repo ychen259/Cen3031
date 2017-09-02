@@ -1,0 +1,42 @@
+#searchBar {
+  margin: 15px 10px;
+}
+
+.tableWrapper {
+  max-height: 600px;
+  overflow: auto;
+}
+
+table,th,td {
+  border: solid #195fd1;
+}
+
+input{
+  margin:2px;
+}
+
+form input[type=text], input[type=number]{
+  width:300px;
+}
+
+table th{
+  background-color: #195fd1;
+}
+
+.row h1{
+  text-align: center;
+}
+
+.img {
+    width: 70px;
+    height: 25px;
+}
+
+.addToList{
+  padding-top: 30px;
+  padding-left:90px;
+}
+
+body{
+	font-family: 'Acme', sans-serif;
+}

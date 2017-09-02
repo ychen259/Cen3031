@@ -1,0 +1,3 @@
+filter 之后 index不会随着变
+==================================
+filter 之后array 的index变了，但是listing的index不变

@@ -40,3 +40,7 @@ table th{
 body{
 	font-family: 'Acme', sans-serif;
 }
+
+th{
+  color: white;
+}

@@ -41,7 +41,6 @@ describe('UF Directory Server Unit Tests', function() {
           Note in this unit test we are only testing the existence of a response, and are not concerned 
           with what is contained in the response.
          */
-         console.log("I am here");
         should.not.exist(error);
         should.exist(response);
         done();

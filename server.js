@@ -23,7 +23,7 @@ var requestHandler = function(request, response) {
    if(request.method == 'GET' && parsedUrl.path == '/listings') {
      response.writeHead(200, {"Content-Type": "application/json"})
      response.end(JSON.stringify(listingData));
-     //response.end(listingData);
+//response.end(listingData);
      response.statusCode = 200;
    }
    else {
